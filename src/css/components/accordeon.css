@@ -52,6 +52,19 @@ h1 {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 400ms ease;
+}
+
+.accordeon > details[open] {
+  flex-grow: 3;
+}
+
+.accordeon > details[open] > summary {
+  flex: 0 0 58%;
+}
+
+.accordeon > details[open] > summary img {
+  transform: scale(1.04);
 }
 
 .accordeon > details > div {
@@ -78,5 +91,14 @@ h1 {
 
   .accordeon > details {
     height: 10rem;
+  }
+
+  .accordeon > details[open] {
+    height: auto;
+    min-height: 10rem;
+  }
+
+  .accordeon > details[open] > summary {
+    flex-basis: 8rem;
   }
 }
