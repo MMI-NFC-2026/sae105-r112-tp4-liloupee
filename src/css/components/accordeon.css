@@ -1,51 +1,46 @@
-/**
-* Accordeon
-*/
-
-* {
-  box-sizing: border-box;
-}
-
 body {
   margin: 0;
-  padding: clamp(1.5rem, 5vw, 4rem);
-  color: #172033;
-  background: #f3f5f8;
-  font-family: system-ui, sans-serif;
+  padding: 1rem;
+  color: #000;
+  font-family: Arial, sans-serif;
 }
 
 h1 {
-  width: min(100%, 70rem);
-  margin: 0 auto 1.5rem;
+  margin: 0 0 1rem;
+  font-size: 1.5rem;
 }
 
 .accordeon {
   display: flex;
-  gap: 1rem;
-  width: min(100%, 70rem);
-  margin: 0 auto;
+  flex-direction: column;
+  gap: 0.25rem;
+  width: 11.5rem;
+  height: 27rem;
 }
 
 .accordeon > details {
   display: flex;
-  flex: 1 1 0;
+  flex: 1;
   flex-direction: column;
-  min-width: 0;
-  height: 28rem;
+  min-height: 0;
   overflow: hidden;
-  border-radius: 1rem;
-  background: #fff;
-  box-shadow: 0 0.5rem 1.5rem rgb(23 32 51 / 12%);
-  transition: flex-grow 400ms ease;
+  background: #eee;
+  border-radius: 0.4rem;
+  transition: flex 0.35s ease;
+}
+
+.accordeon > details[open] {
+  flex: 3;
 }
 
 .accordeon > details > summary {
-  position: relative;
-  flex: 1;
-  min-height: 0;
-  overflow: hidden;
-  cursor: pointer;
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.25rem;
   list-style: none;
+  cursor: pointer;
 }
 
 .accordeon > details > summary::marker,
@@ -53,78 +48,42 @@ h1 {
   display: none;
 }
 
+.accordeon > details > summary img {
+  display: block;
+  width: 6.25rem;
+  height: 4.8rem;
+  object-fit: cover;
+}
+
 .accordeon > details > summary::after {
-  position: absolute;
-  right: 1.25rem;
-  bottom: 1.25rem;
-  width: 0;
-  height: 0;
-  border-top: 0.65rem solid #fff;
-  border-right: 0.5rem solid transparent;
-  border-left: 0.5rem solid transparent;
+  margin-right: 0.6rem;
+  border-top: 1.9rem solid transparent;
+  border-bottom: 1.9rem solid transparent;
+  border-left: 2.3rem solid #bbb;
   content: "";
-  filter: drop-shadow(0 1px 2px rgb(0 0 0 / 55%));
-  transition: transform 200ms ease;
+  transition: transform 0.3s ease, border-left-color 0.3s ease;
+}
+
+.accordeon > details > summary:hover::after {
+  border-left-color: #999;
 }
 
 .accordeon > details[open] > summary::after {
-  transform: rotate(180deg);
-}
-
-.accordeon > details > summary img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 400ms ease;
-}
-
-.accordeon > details[open] {
-  flex-grow: 3;
-}
-
-.accordeon > details[open] > summary {
-  flex: 0 0 58%;
-}
-
-.accordeon > details[open] > summary img {
-  transform: scale(1.04);
+  border-left-color: #f9b4b8;
+  transform: rotate(90deg);
 }
 
 .accordeon > details > div {
-  padding: 1.25rem 1.5rem;
+  padding: 0 0.75rem 0.75rem;
+  overflow: auto;
 }
 
-.accordeon h3 {
-  margin: 0 0 0.5rem;
+.accordeon h2 {
+  margin: 0.5rem 0;
+  font-size: 1rem;
 }
 
 .accordeon p {
   margin: 0;
-  line-height: 1.6;
-}
-
-@media (max-width: 40rem) {
-  body {
-    padding: 1.5rem;
-  }
-
-  .accordeon {
-    flex-direction: column;
-  }
-
-  .accordeon > details {
-    flex: 0 0 10rem;
-    height: 10rem;
-  }
-
-  .accordeon > details[open] {
-    flex: 0 0 auto;
-    height: auto;
-    min-height: 10rem;
-  }
-
-  .accordeon > details[open] > summary {
-    flex-basis: 8rem;
-  }
+  font-size: 0.8rem;
 }
