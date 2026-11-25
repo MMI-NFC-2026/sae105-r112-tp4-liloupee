@@ -114,10 +114,12 @@ h1 {
   }
 
   .accordeon > details {
+    flex: 0 0 10rem;
     height: 10rem;
   }
 
   .accordeon > details[open] {
+    flex: 0 0 auto;
     height: auto;
     min-height: 10rem;
   }
